@@ -1,23 +1,62 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { VscSignIn } from "react-icons/vsc";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
+import { useState } from "react";
+import { IoEyeOutline } from "react-icons/io5";
+import { IoEyeOffOutline } from "react-icons/io5";
+ import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const { signIn } = useContext(AuthContext);
+    const location = useLocation()
+    const navigate = useNavigate()
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        const form = new FormData(e.currentTarget)
+        const email = form.get('email')
+        const password = form.get('password')
+
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user)
+                toast.success("Success! You will now be redirected")
+                navigate(location?.state ? location.state : '/')
+            })
+            .catch(error => {
+                toast.error(error.message)
+                
+        })
+
+
+
+    }
+
+
+
+
   return (
     <div className="min-h-screen flex justify-center items-center bg-secondaryWhite">
       <Helmet>
         <title>Douglas | Login</title>
       </Helmet>
 
-      <div className="hero-content flex-col items-center  justify-center lg:flex-row gap-10  ">
-        <div className=" hidden lg:flex flex-col -mt-48 " data-aos="flip-up">
-          <h1 className="text-6xl font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
+      <div className="hero-content flex-col items-center  justify-center lg:flex-row gap-10  p-5">
+        <div className=" hidden lg:flex md:flex flex-col -mt-48 " data-aos="flip-up">
+          <h1 className="lg:text-6xl md:text-4xl  font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
             Douglas Penthouse
           </h1>
           <img
-            className="w-[800px] shadow-xl mt-10 border-2 border-white"
+            className="lg:w-[800px] md:w-[500px] shadow-xl mt-10 border-2 border-white"
             src="https://i.ibb.co/X8Ljrxw/lotus-design-n-print-jt2-I98bh53-A-unsplash.jpg"
             alt="img"
           />
@@ -33,13 +72,15 @@ const Login = () => {
               Sign In
             </h1>
           </div>
-          <form className="card-body">
+          <form className="card-body" onSubmit={handleLogin}>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -50,13 +91,28 @@ const Login = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
+              <div className="flex items-center ">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  placeholder="password"
+                  
+                  className="input input-bordered w-full"
+                  required
+                />
+                <span
+                  className="-ml-6"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <IoEyeOutline> </IoEyeOutline>
+                  ) : (
+                    <IoEyeOffOutline></IoEyeOffOutline>
+                  )}
+                </span>
+              </div>
               <label className="label">
                 <Link to="/register">
                   Don't have an account ?
@@ -88,6 +144,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

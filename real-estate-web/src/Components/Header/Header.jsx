@@ -1,6 +1,22 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
-import './header.css'
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import "./header.css";
+ import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success("Successfully logged out");
+            })
+            .catch(error => {
+                toast.error(error.message);
+        })
+          
+    }
+
   const navigation = (
     <div
       className="flex lg:flex-row flex-col gap-10 items-start p-4 lg:p-0 lg:items-center"
@@ -12,12 +28,14 @@ const Header = () => {
         </a>
       </NavLink>
       <NavLink to="/updateProfile">
-        <a><li>Update Profile</li></a>
-        
+        <a>
+          <li>Update Profile</li>
+        </a>
       </NavLink>
       <NavLink to="/register">
-        <a><li>Register</li></a>
-        
+        <a>
+          <li>Register</li>
+        </a>
       </NavLink>
     </div>
   );
@@ -60,26 +78,73 @@ const Header = () => {
         <ul className="menu menu-horizontal px-1">{navigation}</ul>
       </div>
       <div className="navbar-end">
-        <div className="mr-5">
-          <Link to='/login'>
-            <button>Login</button>
-          </Link>
-        </div>
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
+        {user ? (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
+              </div>
             </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li className="pt-2 pb-2">
+                <a className="justify-between text-xs">{user.email}</a>
+              </li>
+              <li>
+                <Link to="updateProfile">Update Profile</Link>
+              </li>
+              <li>
+                <button
+                  onClick={handleLogOut}
+                  className="pt-1 pb-1 pr-2 pl-2 bg-red-500 w-[70px] text-xs mt-2 ml-3 text-center rounded-full text-white "
+                >
+                  Log Out
+                </button>
+              </li>
+            </ul>
           </div>
-        </div>
+        ) : (
+          <div className="dropdown dropdown-end">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-10 rounded-full">
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
+              </div>
+            </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="/login">
+                  <button
+                   
+                    className=" rounded-full p-3 bg-primaryGreen text-primaryWhite text-xs  "
+                  >
+                    Sign In
+                  </button>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };

@@ -4,6 +4,8 @@ import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
+ import { ToastContainer, toast } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
 // ..
 AOS.init({
   offset: 200, // Offset (in pixels) from the original trigger point

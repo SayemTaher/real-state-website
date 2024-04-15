@@ -1,30 +1,89 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { AiOutlineLogin } from "react-icons/ai";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { useState } from "react";
+ import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { IoEyeOutline } from "react-icons/io5";
+ import { IoEyeOffOutline } from "react-icons/io5";
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const [photoUrl, setPhotUrl] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
+
+
+    
+    const handleRegister = e => {
+        e.preventDefault()
+        
+        const form = new FormData(e.currentTarget)
+        const email = form.get('email')
+        const password = form.get('password');
+        const name = form.get('name')
+        const photoUrl = form.get('image')
+
+        if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
+            toast.error('Pssword should be 6 characters long with an uppercase and a lowercase!!')
+            return;
+        }
+        
+
+        createUser(email, password)
+            .then(result => {
+                console.log(result.user)
+                toast.success('User Created Successfully!!');
+                setEmail('')
+                setName('')
+                setPassword('')
+                setPhotUrl('')
+                
+                
+            })
+            .catch(error => {
+                console.log('Error:', error.message)
+                toast.error(error.message);
+        })
+        
+
+        
+        
+            }
+    
+
   return (
     <div className="hero min-h-screen bg-secondaryWhite">
       <Helmet>
         <title>Douglas | Sign Up</title>
       </Helmet>
-      <div className="hero-content flex-col lg:flex-row gap-10 ">
+      <div className="hero-content flex-col lg:flex-row gap-10  p-5">
         <div className="-mt-72 hidden lg:flex flex-col " data-aos="flip-up">
-          <h1 className="text-6xl font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">Douglas Penthouse</h1>
+          <h1 className="lg:text-6xl md:text-4xl font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
+            Douglas Penthouse
+          </h1>
           <img
-            className="w-[800px] shadow-xl mt-10"
+            className="lg:w-[800px] md:w-[400px] shadow-xl mt-10 border-2 border-white"
             src="https://i.ibb.co/D9RWXzq/infinite-views-79-Njp-XDOJU8-unsplash.jpg"
             alt="img"
           />
         </div>
 
-        <div data-aos="fade-up-right" className="card lg:w-[450px] md:w-[400px] border-2 border-primaryOlive w-[400px] shadow-2xl bg-primaryWhite">
+        <div
+          data-aos="fade-up-right"
+          className="card lg:w-[450px] md:w-[400px] border-2 border-primaryOlive w-[400px] shadow-2xl bg-primaryWhite"
+        >
           <div className="m-5 flex lg:flex-row gap-2 items-center justify-center">
             <AiOutlineLogin className="text-4xl"></AiOutlineLogin>
             <h1 className="text-center pt-10 text-primaryOlive font-bold text-3xl border-b-2 pb-4 ">
               Register Now
             </h1>
           </div>
-          <form className="card-body">
+          <form className="card-body" onSubmit={handleRegister}>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Full Name</span>
@@ -32,6 +91,8 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Enter your full name"
                 className="input input-bordered"
                 required
@@ -44,6 +105,8 @@ const Register = () => {
               <input
                 type="text"
                 name="image"
+                value={photoUrl}
+                onChange={(e) => setPhotUrl(e.target.value)}
                 placeholder="Your image url"
                 className="input input-bordered"
                 required
@@ -55,6 +118,8 @@ const Register = () => {
               </label>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 name="email"
                 placeholder="email"
                 className="input input-bordered"
@@ -65,18 +130,32 @@ const Register = () => {
               <label className="label">
                 <span className="label-text">Password</span>
               </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-                className="input input-bordered"
-                required
-              />
-              <label className="label">
-                <Link to="/login">
-                  Already have an account? <span className="text-primaryGreen font-bold hover:border-b-2 border-primaryOlive">Login</span>
-                </Link>
-              </label>
+              <div className="flex items-center ">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  name="password"
+                  placeholder="password"
+                  className="input input-bordered w-full"
+                  required
+                />
+                <span
+                  className="-ml-6"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? (
+                    <IoEyeOutline> </IoEyeOutline>
+                  ) : (
+                    <IoEyeOffOutline></IoEyeOffOutline>
+                  )}
+                </span>
+              </div>
+              {/* place checkbox here */}
+              <div className="flex gap-2 items-center mt-2 mb-2">
+                    <input type="checkbox" className="checkbox"  required/>
+                     <span>Accept terms & conditions</span>
+              </div>
             </div>
             <div className="form-control mt-6">
               <button
@@ -86,9 +165,18 @@ const Register = () => {
                 Register
               </button>
             </div>
+            <label className="label flex justify-center">
+              <Link to="/login">
+                Already have an account ?
+                <span className="text-primaryGreen font-bold hover:border-b-2 border-primaryOlive ml-2">
+                  Login
+                </span>
+              </Link>
+            </label>
           </form>
         </div>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
