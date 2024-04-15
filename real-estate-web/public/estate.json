@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "segment_name": "Residential",
+    "estate_title": "Luxury Penthouse with Ocean View",
+    "description": "Beautiful penthouse located in a prime waterfront location with stunning ocean views.",
+    "price": "$2,500,000",
+    "status": "sale",
+    "area": "3000 sq ft",
+    "location": "Miami Beach, FL",
+    "facilities": ["Oceanfront balcony", "Private elevator", "Spa", "Gym"],
+    "image": "path/to/image1.jpg"
+  },
+  {
+    "id": 2,
+    "segment_name": "Residential",
+    "estate_title": "Modern Penthouse in the Heart of Downtown",
+    "description": "Contemporary penthouse featuring sleek design and high-end finishes.",
+    "price": "$1,800,000",
+    "status": "rent",
+    "area": "2500 sq ft",
+    "location": "New York City, NY",
+    "facilities": ["Roof terrace", "Concierge service", "Fitness center"],
+    "image": "path/to/image2.jpg"
+  },
+  {
+    "id": 3,
+    "segment_name": "Residential",
+    "estate_title": "Luxurious Sky Villa with City Views",
+    "description": "Stunning sky villa offering panoramic city views and luxurious amenities.",
+    "price": "$3,200,000",
+    "status": "rent",
+    "area": "4000 sq ft",
+    "location": "Los Angeles, CA",
+    "facilities": ["Infinity pool", "Home theater", "Wine cellar"],
+    "image": "path/to/image3.jpg"
+  },
+  {
+    "id": 4,
+    "segment_name": "Residential",
+    "estate_title": "Exclusive Penthouse Retreat",
+    "description": "Exclusive penthouse retreat nestled in a serene mountain setting.",
+    "price": "$2,000,000",
+    "status": "rent",
+    "area": "3500 sq ft",
+    "location": "Aspen, CO",
+    "facilities": ["Ski-in/ski-out access", "Hot tub", "Fireplace"],
+    "image": "path/to/image4.jpg"
+  },
+  {
+    "id": 5,
+    "segment_name": "Residential",
+    "estate_title": "Seaside Penthouse Retreat",
+    "description": "Luxurious penthouse retreat overlooking the sparkling coastline.",
+    "price": "$3,800,000",
+    "status": "sale",
+    "area": "2800 sq ft",
+    "location": "Malibu, CA",
+    "facilities": ["Private beach access", "Infinity pool", "Outdoor kitchen"],
+    "image": "path/to/image5.jpg"
+  },
+  {
+    "id": 6,
+    "segment_name": "Residential",
+    "estate_title": "Urban Chic Penthouse Loft",
+    "description": "Chic loft-style penthouse with industrial-inspired design and city skyline views.",
+    "price": "$1,500,000",
+    "status": "sale",
+    "area": "2000 sq ft",
+    "location": "Chicago, IL",
+    "facilities": ["Exposed brick walls", "Rooftop garden", "Home office"],
+    "image": "path/to/image6.jpg"
+  },
+  {
+    "id": 7,
+    "segment_name": "Residential",
+    "estate_title": "Mountain View Penthouse Sanctuary",
+    "description": "Tranquil penthouse sanctuary surrounded by majestic mountain vistas.",
+    "price": "$2,700,000",
+    "status": "sale",
+    "area": "3200 sq ft",
+    "location": "Boulder, CO",
+    "facilities": ["Wrap-around balcony", "Fitness studio", "Sauna"],
+    "image": "path/to/image7.jpg"
+  },
+  {
+    "id": 8,
+    "segment_name": "Residential",
+    "estate_title": "Luxury Sky Penthouse",
+    "description": "Elegant sky penthouse offering unparalleled luxury and breathtaking views.",
+    "price": "$4,500,000",
+    "status": "sale",
+    "area": "4500 sq ft",
+    "location": "San Francisco, CA",
+    "facilities": [
+      "Private rooftop terrace",
+      "Smart home automation",
+      "Home cinema"
+    ],
+    "image": "path/to/image8.jpg"
+  }
+]
