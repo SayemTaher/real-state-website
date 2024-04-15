@@ -13,7 +13,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const { signIn } = useContext(AuthContext);
+    const { signIn, signInwithGoogle } = useContext(AuthContext);
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -40,6 +40,20 @@ const Login = () => {
 
 
     }
+    const handleGoogleLogin = () => {
+        signInwithGoogle()
+            .then(result => {
+                 console.log(result.user);
+                 toast.success("Success! You will now be redirected");
+                 navigate(location?.state ? location.state : "/");
+            
+            })
+            .catch(error => {
+                console.log('error:', error.message)
+            toast.error(error.message)
+        })
+        
+    }
 
 
 
@@ -51,7 +65,10 @@ const Login = () => {
       </Helmet>
 
       <div className="hero-content flex-col items-center  justify-center lg:flex-row gap-10  p-5">
-        <div className=" hidden lg:flex md:flex flex-col -mt-48 " data-aos="flip-up">
+        <div
+          className=" hidden lg:flex md:flex flex-col -mt-48 "
+          data-aos="flip-up"
+        >
           <h1 className="lg:text-6xl md:text-4xl  font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
             Douglas Penthouse
           </h1>
@@ -98,7 +115,6 @@ const Login = () => {
                   onChange={(e) => setPassword(e.target.value)}
                   name="password"
                   placeholder="password"
-                  
                   className="input input-bordered w-full"
                   required
                 />
@@ -134,7 +150,10 @@ const Login = () => {
             <div className="flex flex-col gap-2">
               <div className="flex btn bg-primaryWhite border-2 hover:scale-95 hover:bg-primaryWhite border-secondaryOlive shadow-xl rounded-full  items-center gap-3 text center justify-center">
                 <FcGoogle className="text-2xl"></FcGoogle>
-                <button> Sign In with Google</button>
+                <button onClick={handleGoogleLogin}>
+                  
+                  Sign In with Google
+                </button>
               </div>
               <div className="flex btn bg-primaryWhite border-2 hover:scale-95 hover:bg-primaryWhite border-secondaryOlive  shadow-xl rounded-full  items-center gap-3 text center justify-center">
                 <SiGithub className="text-2xl"></SiGithub>
