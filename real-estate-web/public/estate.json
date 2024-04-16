@@ -9,7 +9,7 @@
     "area": "3000 sq ft",
     "location": "Miami Beach, FL",
     "facilities": ["Oceanfront balcony", "Private elevator", "Spa", "Gym"],
-    "image": "path/to/image1.jpg"
+    "image": "https://i.ibb.co/41rZHGV/asia-culturecenter-Yj-CY61-CTRp-E-unsplash.jpg"
   },
   {
     "id": 2,
@@ -21,7 +21,7 @@
     "area": "2500 sq ft",
     "location": "New York City, NY",
     "facilities": ["Roof terrace", "Concierge service", "Fitness center"],
-    "image": "path/to/image2.jpg"
+    "image": "https://i.ibb.co/b5mN5bk/derek-thomson-p50-Hc-C0-Yr-L0-unsplash.jpg"
   },
   {
     "id": 3,
@@ -33,7 +33,7 @@
     "area": "4000 sq ft",
     "location": "Los Angeles, CA",
     "facilities": ["Infinity pool", "Home theater", "Wine cellar"],
-    "image": "path/to/image3.jpg"
+    "image": "https://i.ibb.co/V06x3Wr/francesca-tosolini-t-Hk-JAMc-O3-QE-unsplash.jpg"
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@
     "area": "3500 sq ft",
     "location": "Aspen, CO",
     "facilities": ["Ski-in/ski-out access", "Hot tub", "Fireplace"],
-    "image": "path/to/image4.jpg"
+    "image": "https://i.ibb.co/ZJn6C4X/im3rd-media-f888opo-BHUo-unsplash.jpg"
   },
   {
     "id": 5,
@@ -57,7 +57,7 @@
     "area": "2800 sq ft",
     "location": "Malibu, CA",
     "facilities": ["Private beach access", "Infinity pool", "Outdoor kitchen"],
-    "image": "path/to/image5.jpg"
+    "image": "https://i.ibb.co/G0QzHP8/lotus-design-n-print-t294-ZZP2pg-unsplash.jpg"
   },
   {
     "id": 6,
@@ -69,7 +69,7 @@
     "area": "2000 sq ft",
     "location": "Chicago, IL",
     "facilities": ["Exposed brick walls", "Rooftop garden", "Home office"],
-    "image": "path/to/image6.jpg"
+    "image": "https://i.ibb.co/Q89h6V4/mostafa-safadel-c-Hj-Axn-Jk-w-Q-unsplash.jpg"
   },
   {
     "id": 7,
@@ -81,7 +81,7 @@
     "area": "3200 sq ft",
     "location": "Boulder, CO",
     "facilities": ["Wrap-around balcony", "Fitness studio", "Sauna"],
-    "image": "path/to/image7.jpg"
+    "image": "https://i.ibb.co/kK7P4cb/sam-moghadam-khamseh-EKPQ1-NUTo6o-unsplash.jpg"
   },
   {
     "id": 8,
@@ -97,6 +97,6 @@
       "Smart home automation",
       "Home cinema"
     ],
-    "image": "path/to/image8.jpg"
+    "image": "https://i.ibb.co/V06x3Wr/francesca-tosolini-t-Hk-JAMc-O3-QE-unsplash.jpg"
   }
 ]

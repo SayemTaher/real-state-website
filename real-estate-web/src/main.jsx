@@ -11,6 +11,7 @@ import Login from "./Components/Login/Login";
 import UpdateProfile from "./Components/UpdateProfile/UpdateProfile";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./AuthProvider/AuthProvider";
+import Details from "./Components/Details/Details";
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader:() => fetch('estate.json')
       },
       {
         path: "/register",
@@ -29,6 +31,11 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path:'/details',
+        element:<Details></Details>
+
       },
       {
         path: "updateProfile",

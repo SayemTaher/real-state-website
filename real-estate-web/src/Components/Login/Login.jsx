@@ -12,8 +12,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
-    const [showPassword, setShowPassword] = useState(false);
-    const { signIn, signInwithGoogle } = useContext(AuthContext);
+    const [showPassword, setShowPassword ] = useState(false);
+    const { signIn, signInwithGoogle, signInWithGitHub} = useContext(AuthContext);
     const location = useLocation()
     const navigate = useNavigate()
 
@@ -54,6 +54,20 @@ const Login = () => {
         })
         
     }
+    const handleGitHubLogin = () => {
+      signInWithGitHub()
+          .then(result => {
+               console.log(result.user);
+               toast.success("Success! You will now be redirected");
+               navigate(location?.state ? location.state : "/");
+          
+          })
+          .catch(error => {
+              console.log('error:', error.message)
+          toast.error(error.message)
+      })
+      
+  }
 
 
 
@@ -66,14 +80,14 @@ const Login = () => {
 
       <div className="hero-content flex-col items-center  justify-center lg:flex-row gap-10  p-5">
         <div
-          className=" hidden lg:flex md:flex flex-col -mt-48 "
+          className=" hidden lg:flex md:flex flex-col  "
           data-aos="flip-up"
         >
-          <h1 className="lg:text-6xl md:text-4xl  font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
+          <h1 className="lg:text-5xl md:text-2xl  font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
             Douglas Penthouse
           </h1>
           <img
-            className="lg:w-[800px] md:w-[500px] shadow-xl mt-10 border-2 border-white"
+            className="lg:w-[600px] md:w-[400px] shadow-xl mt-10 border-2 border-white"
             src="https://i.ibb.co/X8Ljrxw/lotus-design-n-print-jt2-I98bh53-A-unsplash.jpg"
             alt="img"
           />
@@ -81,7 +95,7 @@ const Login = () => {
 
         <div
           data-aos="fade-up-right"
-          className="card lg:w-[450px] md:w-[400px] border-2 border-primaryOlive w-[400px] shadow-2xl bg-primaryWhite"
+          className="card lg:w-[400px] md:w-[300px] border-2 border-primaryOlive shadow-2xl bg-primaryWhite"
         >
           <div className="m-5 flex lg:flex-row gap-2 items-center justify-center">
             <VscSignIn className="text-4xl"></VscSignIn>
@@ -131,7 +145,7 @@ const Login = () => {
               </div>
               <label className="label">
                 <Link to="/register">
-                  Don't have an account ?
+                  Do not have an account ?
                   <span className="text-primaryGreen font-bold hover:border-b-2 border-primaryOlive">
                     Register
                   </span>
@@ -140,7 +154,7 @@ const Login = () => {
             </div>
             <div className="form-control mt-6">
               <button
-                className="btn bg-primaryOlive rounded-full text-white text-lg"
+                className="btn bg-primaryOlive border-2 border-primaryWhite rounded-full text-white text-lg"
                 type="submit"
               >
                 Login
@@ -157,7 +171,7 @@ const Login = () => {
               </div>
               <div className="flex btn bg-primaryWhite border-2 hover:scale-95 hover:bg-primaryWhite border-secondaryOlive  shadow-xl rounded-full  items-center gap-3 text center justify-center">
                 <SiGithub className="text-2xl"></SiGithub>
-                <button>Sign In with Github</button>
+                <button onClick={handleGitHubLogin}>Sign In with Github</button>
               </div>
             </div>
           </form>

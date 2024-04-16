@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { AiOutlineLogin } from "react-icons/ai";
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -11,6 +12,7 @@ import { IoEyeOutline } from "react-icons/io5";
 const Register = () => {
 
     const { createUser } = useContext(AuthContext)
+    const navigate = useNavigate()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,8 +27,10 @@ const Register = () => {
         const form = new FormData(e.currentTarget)
         const email = form.get('email')
         const password = form.get('password');
+        // eslint-disable-next-line no-unused-vars
         const name = form.get('name')
         const photoUrl = form.get('image')
+        console.log(email,password,name,photoUrl)
 
         if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
             toast.error('Pssword should be 6 characters long with an uppercase and a lowercase!!')
@@ -42,6 +46,7 @@ const Register = () => {
                 setName('')
                 setPassword('')
                 setPhotUrl('')
+                navigate('/login')
                 
                 
             })
@@ -57,17 +62,17 @@ const Register = () => {
     
 
   return (
-    <div className="hero min-h-screen bg-secondaryWhite">
+    <div className="hero  min-h-screen  bg-secondaryWhite">
       <Helmet>
         <title>Douglas | Sign Up</title>
       </Helmet>
-      <div className="hero-content flex-col lg:flex-row gap-10  p-5">
-        <div className="-mt-72 hidden lg:flex flex-col " data-aos="flip-up">
-          <h1 className="lg:text-6xl md:text-4xl font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
+      <div className="hero-content flex-col p-5 lg:flex-row gap-10  ">
+        <div className=" hidden lg:flex flex-col " data-aos="flip-up">
+          <h1 className="lg:text-5xl md:text-4xl font-bold w-[350px] text-primaryOlive border-b-4 pb-6 border-white">
             Douglas Penthouse
           </h1>
           <img
-            className="lg:w-[800px] md:w-[400px] shadow-xl mt-10 border-2 border-white"
+            className="lg:w-[600px] md:w-[400px] shadow-xl mt-10 border-2 border-white"
             src="https://i.ibb.co/D9RWXzq/infinite-views-79-Njp-XDOJU8-unsplash.jpg"
             alt="img"
           />
@@ -75,9 +80,9 @@ const Register = () => {
 
         <div
           data-aos="fade-up-right"
-          className="card lg:w-[450px] md:w-[400px] border-2 border-primaryOlive w-[400px] shadow-2xl bg-primaryWhite"
+          className="card lg:w-[380px] md:w-[350px] border-2 border-primaryOlive  shadow-2xl bg-primaryWhite"
         >
-          <div className="m-5 flex lg:flex-row gap-2 items-center justify-center">
+          <div className=" flex lg:flex-row  items-center justify-center">
             <AiOutlineLogin className="text-4xl"></AiOutlineLogin>
             <h1 className="text-center pt-10 text-primaryOlive font-bold text-3xl border-b-2 pb-4 ">
               Register Now
