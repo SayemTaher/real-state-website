@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
@@ -7,6 +8,7 @@ import "./header.css";
 import { useState } from "react";
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
+    // eslint-disable-next-line no-unused-vars
     const [loggedUser, setLoggedUser] = useState(null)
     const handleLogOut = () => {
         logOut()
@@ -113,7 +115,7 @@ const Header = () => {
     );
 
   return (
-    <div className="navbar bg-primaryWhite ">
+    <div className="navbar bg-primaryWhite z-20 relative ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

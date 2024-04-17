@@ -12,6 +12,7 @@ import UpdateProfile from "./Components/UpdateProfile/UpdateProfile";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Details from "./Components/Details/Details";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader:() => fetch('estate.json')
+        loader:() => fetch('/estate.json')
       },
       {
         path: "/register",
@@ -33,13 +34,14 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        path:'/details',
-        element:<Details></Details>
+        path:'/details/:id',
+        element:<PrivateRoute><Details></Details></PrivateRoute>,
+        loader:() => fetch('/estate.json')
 
       },
       {
         path: "updateProfile",
-        element: <UpdateProfile></UpdateProfile>,
+        element: <PrivateRoute><UpdateProfile></UpdateProfile></PrivateRoute>,
       },
     ],
   },

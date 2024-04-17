@@ -11,6 +11,8 @@ export default {
         primaryYellow: "#FAE011",
         primaryOlive: "#292900",
         secondaryOlive: "#A5A99D",
+        navy:"#05022B",
+        blurBg:"#F4F8EC"
       },
     },
   },
