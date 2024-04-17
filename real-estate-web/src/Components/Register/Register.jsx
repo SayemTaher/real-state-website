@@ -9,56 +9,44 @@ import { useState } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { IoEyeOutline } from "react-icons/io5";
  import { IoEyeOffOutline } from "react-icons/io5";
+
+
+ 
 const Register = () => {
 
-    const { createUser } = useContext(AuthContext)
-    const navigate = useNavigate()
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [photoUrl, setPhotUrl] = useState('')
-    const [showPassword, setShowPassword] = useState(false)
+  const { createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [photoUrl, setPhotoUrl] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
 
+  const handleRegister = (e) => {
+      e.preventDefault();
+      
+      console.log(email, password, name, photoUrl);
 
-    
-    const handleRegister = e => {
-        e.preventDefault()
-        
-        const form = new FormData(e.currentTarget)
-        const email = form.get('email')
-        const password = form.get('password');
-        // eslint-disable-next-line no-unused-vars
-        const name = form.get('name')
-        const photoUrl = form.get('image')
-        console.log(email,password,name,photoUrl)
-
-        if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
-            toast.error('Pssword should be 6 characters long with an uppercase and a lowercase!!')
-            return;
-        }
-        
-
-        createUser(email, password)
-            .then(result => {
-                console.log(result.user)
-                toast.success('User Created Successfully!!');
-                setEmail('')
-                setName('')
-                setPassword('')
-                setPhotUrl('')
-                navigate('/login')
-                
-                
-            })
-            .catch(error => {
-                console.log('Error:', error.message)
-                toast.error(error.message);
-        })
-        
-
-        
-        
-            }
+      if (!/^(?=.*[A-Z])(?=.*[a-z]).{6,}$/.test(password)) {
+          toast.error('Password should be 6 characters long with an uppercase and a lowercase letter.');
+          return;
+      }
+      
+      createUser(email, password, name, photoUrl)
+          .then(() => {
+              toast.success('User Created Successfully!!');
+              
+              setEmail('');
+              setName('');
+              setPassword('');
+              setPhotoUrl('');
+              navigate('/login'); 
+          })
+          .catch(error => {
+              console.log('Error:', error.message);
+              toast.error(error.message);
+          });
+  };
     
 
   return (
@@ -111,7 +99,7 @@ const Register = () => {
                 type="text"
                 name="image"
                 value={photoUrl}
-                onChange={(e) => setPhotUrl(e.target.value)}
+                onChange={(e) => setPhotoUrl(e.target.value)}
                 placeholder="Your image url"
                 className="input input-bordered"
                 required

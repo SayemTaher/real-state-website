@@ -1,25 +1,31 @@
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import "./header.css";
  import { ToastContainer, toast } from "react-toastify";
  import "react-toastify/dist/ReactToastify.css";
-import { useState } from "react";
+ import { IoIosLogIn } from "react-icons/io";
+
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut} = useContext(AuthContext);
     // eslint-disable-next-line no-unused-vars
-    const [loggedUser, setLoggedUser] = useState(null)
+    
+    const navigate = useNavigate()
     const handleLogOut = () => {
-        logOut()
-            .then(() => {
-                toast.success("Successfully logged out");
-            })
-            .catch(error => {
-                toast.error(error.message);
-        })
-          
-    }
+       
+      logOut()
+          .then(() => {
+              toast.success("Successfully logged out");
+              
+              navigate('/');  
+          })
+          .catch(error => {
+                
+              toast.error(error.message);
+          });
+  }
+  
 
   const navigation = (
     <div
@@ -41,6 +47,11 @@ const Header = () => {
           <li>Register</li>
         </a>
       </NavLink>
+      <NavLink to="/all">
+        <a>
+          <li>All Properties</li>
+        </a>
+      </NavLink>
     </div>
   );
     const AuthenticatedDropdown = ({ user, handleLogOut }) => (
@@ -56,7 +67,7 @@ const Header = () => {
               src={
                 user
                   ? user.photoURL
-                  : "https://i.ibb.co/nC23FQB/Screenshot-2024-04-15-at-15-53-08.png"
+                  : <img className="w-[100px] rounded-full" src="https://i.ibb.co/nC23FQB/Screenshot-2024-04-15-at-15-53-08.png"></img> 
               }
             />
           </div>
@@ -85,32 +96,13 @@ const Header = () => {
     );
 
     const UnauthenticatedDropdown = () => (
-      <div className="dropdown dropdown-end">
-        <div
-          tabIndex={0}
-          role="button"
-          className="btn btn-ghost btn-circle avatar"
-        >
-          <div className="w-10 rounded-full">
-            <img
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              alt="logo"
-              className="w-[200px] h-[50px] object-cover"
-            />
-          </div>
-        </div>
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-        >
-          <li>
-            <Link to="/login">
-              <button className="rounded-full p-3 bg-primaryGreen text-primaryWhite text-xs">
+      <div className="dropdown dropdown-end flex items-center gap-2 justify-center text-sm font-bold rounded-full p-3 bg-primaryOlive w-[120px] text-primaryWhite ">
+        <IoIosLogIn></IoIosLogIn>
+        <Link to="/login">
+              <button > 
                 Sign In
               </button>
             </Link>
-          </li>
-        </ul>
       </div>
     );
 

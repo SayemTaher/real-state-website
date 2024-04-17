@@ -2,6 +2,7 @@ import { Link, useLoaderData, useParams } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { FaRegBuilding } from "react-icons/fa";
 import { TbBuildingSkyscraper } from "react-icons/tb";
+import 'animate.css';
 import { FaMapLocation } from "react-icons/fa6";
 const Details = () => {
 
@@ -24,7 +25,7 @@ const Details = () => {
             </div>
 
             <div className="flex items-center mt-5 justify-between">
-                <h1 className=" tracking-wider text-2xl lg:text-5xl md:text-3xl font-bold text-primaryOlive">{data.estate_title}</h1>
+                <h1 className=" tracking-wider animate__animated animate__bounce text-2xl lg:text-5xl md:text-3xl font-bold text-primaryOlive">{data.estate_title}</h1>
                 <p className="text-2xl bg-secondaryWhite rounded-full p-2 font-bold text-primaryGreen lg:text-4xl md:text-3xl">{data.price}</p>
             </div>
 

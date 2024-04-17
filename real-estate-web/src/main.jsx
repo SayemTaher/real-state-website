@@ -13,6 +13,7 @@ import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Details from "./Components/Details/Details";
 import PrivateRoute from "./Routes/PrivateRoute";
+import AllProperties from "./Components/All Properties/AllProperties";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path:'/all',
+        element:<PrivateRoute><AllProperties></AllProperties></PrivateRoute>,
+        loader:()=>fetch('/estate.json')
+
       },
       {
         path:'/details/:id',

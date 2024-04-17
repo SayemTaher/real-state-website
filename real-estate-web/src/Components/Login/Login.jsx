@@ -75,7 +75,7 @@ const Login = () => {
   return (
     <div className="min-h-screen flex justify-center items-center bg-secondaryWhite">
       <Helmet>
-        <title>Douglas | Login</title>
+        <title>Douglas | Log In</title>
       </Helmet>
 
       <div className="hero-content flex-col items-center  justify-center lg:flex-row gap-10  p-5">
