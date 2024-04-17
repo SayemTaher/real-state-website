@@ -98,5 +98,21 @@
       "Home cinema"
     ],
     "image": "https://i.ibb.co/V06x3Wr/francesca-tosolini-t-Hk-JAMc-O3-QE-unsplash.jpg"
+  },
+  {
+    "id": 8,
+    "segment_name": "Residential",
+    "estate_title": "Luxury Sky Penthouse Resort",
+    "description": "This 4500 square foot luxury sky penthouse in San Francisco sets a new standard for high-rise living. With its private rooftop terrace, smart home automation, and home cinema, it offers unparalleled luxury and breathtaking city views. The penthouse’s spacious design and exclusive amenities ensure a sophisticated and comfortable lifestyle above the vibrant streets of San Francisco.",
+    "price": "$4,500,000",
+    "status": "sale",
+    "area": "4500 sq ft",
+    "location": "San Francisco, CA",
+    "facilities": [
+      "Private rooftop terrace",
+      "Smart home automation",
+      "Home cinema"
+    ],
+    "image": "https://i.ibb.co/V06x3Wr/francesca-tosolini-t-Hk-JAMc-O3-QE-unsplash.jpg"
   }
 ]
