@@ -1,8 +1,43 @@
-----Project Overview ------
--- This project is mainly designed and developed in order to give users a feeling on how a penthouse website may look like in real life
--- Some pages are initially protected and only allows to view them if the users are registered or logged in.
--- This project is developed by Sayem Ibne Taher using react.js, react router, tailwind and firebase 
--- Initially this project works perfectly  for both mobile and larger devices
--- For the authentication part initially only firebase and github authentications are enabled and is supposed to work conveniently 
--- Note : Forget password and email verification are yet to implement. If you face any problem just create a new user.
--- This project usages slider.js, animate.css , AOS packages to make it look more professional.
+# Penthouse Experience Website
+
+<img src="https://i.ibb.co/N2Rn1fK/Screenshot-2024-06-30-at-23-48-55.png/1000x300" alt="Penthouse Experience Banner" style="width:100%;"/>
+
+---
+
+## Project Overview
+
+### 🌟 The Penthouse Experience
+
+Welcome to the Penthouse Experience! This project is designed to give users a real-life feel of a luxurious penthouse website. With sleek design and smooth functionality, this project showcases the best practices in modern web development.
+
+### 🚀 Key Features
+
+- **Exclusive Access**: Certain pages are protected and accessible only to registered or logged-in users, ensuring a personalized experience.
+- **Responsive Design**: The project is fully responsive, providing an optimal experience on both mobile and larger devices.
+- **Seamless Authentication**: Implemented using Firebase, with GitHub authentication also enabled for convenience.
+
+### 🛠 Technologies Used
+
+- **Frontend**: React.js, React Router, Tailwind CSS
+- **Authentication**: Firebase
+- **Enhancements**: Slider.js, Animate.css, AOS (Animate On Scroll)
+
+---
+
+## How It Works
+
+- **User Registration & Login**: Users can register or log in to access exclusive content.
+- **Responsive Layout**: The website adjusts beautifully to any screen size, from mobile to desktop.
+- **Smooth Animations**: Integrated with Slider.js, Animate.css, and AOS for a professional look and feel.
+
+### 🔒 Note
+
+- **Password Recovery & Email Verification**: These features are not yet implemented. If you encounter any issues, please create a new user account.
+
+---
+
+## Developed By
+
+Sayem Ibne Taher
+
+
