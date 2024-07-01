@@ -1,6 +1,6 @@
 # Penthouse Experience Website
 
-<img src="https://i.ibb.co/N2Rn1fK/Screenshot-2024-06-30-at-23-48-55.png/1000x300" alt="Penthouse Experience Banner" style="width:100%;"/>
+
 
 ---
 
